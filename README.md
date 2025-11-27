@@ -76,14 +76,12 @@ date: {start_date}
 categories: post
 tags: [{tags_formatted}]
 ---
-```
 {post_name} 
 {distance:.2f} mi 
 {duration_str} 
 {pace_str}/mi 
 Workout: {workout} 
 Comments: {comment}
-```
 """
 ```
 
