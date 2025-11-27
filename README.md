@@ -26,7 +26,9 @@ graph LR
 
 **2. Note Parsing** I use a custom format in my watch notes to split technical workout data from personal thoughts. The script parses this string:
 
-> **Input:** `w: Intervals 4x400 c: Felt strong, humid weather.`
+> **Input:** `
+> w: Intervals 4x400
+> c: Felt strong, humid weather.`
 
 It extracts these into separate Markdown frontmatter fields (`Workout` and `Comments`) using Regex, keeping the blog metadata clean.
 
