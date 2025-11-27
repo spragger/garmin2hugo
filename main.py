@@ -8,8 +8,8 @@ Dependencies:
     pip install garminconnect python-dotenv tabulate python-dateutil requests
 
 Environment Variables:
-    EMAIL
-    PASSWORD
+    GARMIN_EMAIL
+    GARMIN_PASSWORD
 """
 
 import logging
@@ -75,14 +75,14 @@ def print_banner():
     ascii_banner = r"""
   ++--------------------------------------------------------------------++
   ||                                                                    ||
-  ||                      _              ____  _   _                      ||
-  ||   __ _  __ _ _ __ _ __ ___ (_)_ __ |___ \| | | |_    _  __ _  ___    ||
-  ||  / _` |/ _` | '__| '_ ` _ \| | '_ \  __) | |_| | | | |/ _` |/ _ \   ||
-  || | (_| | (_| | |  | | | | | | | | | |/ __/|  _  | |_| | (_| | (_) |  ||
-  ||  \__, |\__,_|_|  |_| |_| |_|_|_| |_|_____|_| |_|\__,_|\__, |\___/   ||
-  ||  |___/                                                 |___/        ||
+  ||                            _        ____  _   _                    ||
+  ||   __ _  __ _ _ __ _ __ ___ (_)_ __ |___ \| | | |_   _  __ _  ___   ||
+  ||  / _` |/ _` | '__| '_ ` _ \| | '_ \  __) | |_| | | | |/ _` |/ _ \  ||
+  || | (_| | (_| | |  | | | | | | | | | |/ __/|  _  | |_| | (_| | (_) | ||
+  ||  \__, |\__,_|_|  |_| |_| |_|_|_| |_|_____|_| |_|\__,_|\__, |\___/  ||
+  ||  |___/                                                 |___/       ||
   ||                                                                    ||
-  ||     A python script to automate Hugo posts from Garmin activities    ||
+  ||     A python script to automate Hugo posts from Garmin activities  ||
   ||                                                                    ||
   ++--------------------------------------------------------------------++
 """
@@ -317,11 +317,11 @@ def main():
     DRY_RUN = False  # Set to True to print post content instead of writing file
 
     # --- Environment Variable Setup ---
-    email = os.getenv("EMAIL")
-    password = os.getenv("PASSWORD")
+    email = os.getenv("GARMIN_EMAIL")
+    password = os.getenv("GARMIN_PASSWORD")
 
     if not email or not password:
-        sys.exit("❌ EMAIL and PASSWORD must be set in .env or environment variables.")
+        sys.exit("❌ GARMIN_EMAIL and GARMIN_PASSWORD must be set in .env or environment variables.")
 
     # --- API Initialization (Run Once) ---
     api = init_api(email, password)
