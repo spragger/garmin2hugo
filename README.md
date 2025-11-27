@@ -1,109 +1,78 @@
-# garmin2hugo
-Garmin2Hugo - A automated running blog
+# 365 Days of Running
 
-# 🏃‍♂️ Garmin2Hugo: An Automated Running Blog Streak Tracker Script Project Thing 
+**A physical challenge documented by code.** On Dec 1 2024, I set a goal to run at least one mile every single day. To keep myself accountable, I built a custom automation pipeline that turns my Garmin watch data into a static blog hosted on SDF.org.
 
-![Python](https://img.shields.io/badge/Python-3.x-blue?style=flat&logo=python)
-
-![Garmin](https://img.shields.io/badge/API-Garmin_Connect-black?style=flat&logo=garmin)
-
-![Hugo](https://img.shields.io/badge/Generator-Hugo-pink?style=flat&logo=hugo)
-
-![Hosting](https://img.shields.io/badge/Hosted_On-SDF.org-black?style=flat&logo=linux)
-
-
-> **The Mission:** On Nov 1, 2024, I set a goal to run at least **1 mile every single day** for 365 days and learn a little Python along the way.
-> **The Solution:** A Python automation tool that fetches activity data, parses my workout notes, and generates a static blog post instantly.
-
-[**🔗 View the Live Blog Here**](https://csprague.sdf.org/)
+[**Visit the Live Blog →**](https://csprague.sdf.org/)
 
 ---
 
-## 📖 Project Overview
+### The Architecture
 
-This repository contains the automation logic behind my "Run Every Day" challenge. Instead of manually updating a blog, I wrote a CLI tool that interacts with the Garmin Connect API to turn physical effort into digital documentation.
-
-The system allows me to:
-1.  **Sync** directly with Garmin.
-2.  **Select** a recent run via an interactive CLI menu.
-3.  **Parse** specific metadata (Workout type vs. Comments) directly from the notes I type into my watch.
-4.  **Build** the Hugo site automatically and prepare it for deployment to [SDF.org](https://sdf.org).
-
-### ⚙️ Architecture
+I wanted a "set it and forget it" workflow. The system connects my physical activity to my digital footprint using the Unix philosophy: simple tools doing one thing well.
 
 ```mermaid
-flowchart LR
-    A[Garmin Watch] -->|Syncs Activity| B(Garmin Cloud)
-    B -->|API Fetch| C{Python Script}
-    C -->|Parses Data| D[Markdown Generator]
-    D -->|Builds Site| E[Hugo Static Site]
-    E -->|Deploys to| F[SDF.org Server]
+graph LR
+    A[Garmin Watch] -->|Sync| B(Garmin Connect)
+    B -->|Fetch| C[Python Script]
+    C -->|Generate| D[Hugo Site]
+    D -->|Deploy| E[SDF.org]
 ```
 
 ---
 
-## 🛠️ Key Features
+### How It Works
 
-### 1. Interactive CLI
-The script uses `tabulate` to present a clean, menu-driven interface, allowing me to choose exactly which activity to publish.
+**1. Data Extraction** The Python script authenticates with the Garmin Connect API and pulls the latest activity data.
 
-### 2. Custom Data Parsing
-I utilize a custom Regex pattern to split the notes field from my Garmin watch into two distinct blog fields: **Workout** and **Comments**.
+**2. Note Parsing** I use a custom format in my watch notes to split technical workout data from personal thoughts. The script parses this string:
 
-* **Input in Garmin:** `w: Interval Training c: Felt strong today`
-* **Output in Blog:** Splits into separate frontmatter fields.
+> **Input:** `w: Intervals 4x400 c: Felt strong, humid weather.`
 
-### 3. Automated Stats Calculation
-The script automatically converts raw API data (duration in seconds, distance in meters) into human-readable imperial units (Miles, Pace per Mile).
+It extracts these into separate Markdown frontmatter fields (`Workout` and `Comments`) using Regex, keeping the blog metadata clean.
+
+**3. Static Generation** The script calculates the pace and distance in Imperial units, generates a Hugo-compatible Markdown file, and triggers a build.
+
+**4. Hosting** The final HTML is served via **SDF.org**, a public access Unix system, keeping the project lightweight and rooted in open computing history.
 
 ---
 
-## 💻 Usage
+### Project Statistics
 
-If you wish to fork this to track your own running goals, follow these steps.
+| Metric | Result |
+| :--- | :--- |
+| **Goal** | Run 1 mile, every day |
+| **Status** | Completed |
+| **Total Distance** | Over 1,500 miles |
+| **Longest Streak** | 365 Days |
+| **Stack** | Python, Hugo, Bash |
 
-### Prerequisites
-* Python 3.x
-* Hugo installed on your machine
-* A Garmin Connect account
+---
 
-### Installation
+### Usage
 
-1.  **Clone the repository**
-    ```bash
-    git clone [https://gitlab.com/your-username/garmin-2-hugo.git](https://gitlab.com/your-username/garmin-2-hugo.git)
-    cd garmin-2-hugo
-    ```
-
-2.  **Install Dependencies**
-    ```bash
-    pip install garminconnect python-dotenv tabulate python-dateutil requests
-    ```
-
-3.  **Configuration**
-    Create a `.env` file in the root directory:
-    ```env
-    EMAIL=your.garmin.email@example.com
-    PASSWORD=your_garmin_password
-    ```
-
-### Running the Script
+This script is designed to be menu-driven for safety, allowing you to review the activity before publishing.
 
 ```bash
+# 1. Install requirements
+pip install -r requirements.txt
+
+# 2. Configure environment
+export EMAIL="your@email.com"
+export PASSWORD="yourpassword"
+
+# 3. Run the generator
 python main.py
 ```
 
----
+### The Code
 
-## 🧠 Code Highlight: Generating the Markdown
+The core of the logic lies in the `write_post` function, which bridges the gap between raw JSON data and the Hugo content structure.
 
-Because the script generates a Markdown file, I had to embed the formatting directly into the Python f-string.
-
-````python
+```python
+# Snippet: Formatting the blog post content
 frontmatter = f"""---
 title: "{title}"
-summary: "{post_name}"
-date: {start_date} {datetime.now().strftime("%H:%M:%S")}
+date: {start_date}
 categories: post
 tags: [{tags_formatted}]
 ---
@@ -116,19 +85,8 @@ Workout: {workout}
 Comments: {comment}
 ```
 """
-````
+```
 
 ---
 
-## 🏆 The "Run Every Day" Goal
-
-This project was built to support a physical challenge. The consistency of the code mirrored the consistency required for the running.
-
-* **Total Distance:** [Insert Total Miles]
-* **Longest Streak:** [365 Days]
-* **Tech Stack:** Python, Hugo, Bash
-
-## 🤝 Acknowledgements
-
-* **SDF.org:** For providing the pure Unix environment to host this site.
-* **cyberjunkie:** For the `garminconnect` Python library.
+*Hosted with pride on [SDF.org](https://sdf.org).*
