@@ -10,13 +10,7 @@
 
 I wanted a "set it and forget it" workflow. The system connects my physical activity to my digital footprint using the Unix philosophy: simple tools doing one thing well.
 
-```mermaid
-graph LR
-    A[Garmin Watch] -->|Sync| B(Garmin Connect)
-    B -->|Fetch| C[Python Script]
-    C -->|Generate| D[Hugo Site]
-    D -->|Deploy| E[SDF.org]
-```
+![Architecture Diagram](./images/mermaid-diagram.png)
 
 ---
 
