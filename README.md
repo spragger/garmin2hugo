@@ -4,9 +4,13 @@ Garmin2Hugo - A automated running blog
 # 🏃‍♂️ Garmin2Hugo: An Automated Running Blog Streak Tracker Script Project Thing 
 
 ![Python](https://img.shields.io/badge/Python-3.x-blue?style=flat&logo=python)
+
 ![Garmin](https://img.shields.io/badge/API-Garmin_Connect-black?style=flat&logo=garmin)
+
 ![Hugo](https://img.shields.io/badge/Generator-Hugo-pink?style=flat&logo=hugo)
+
 ![Hosting](https://img.shields.io/badge/Hosted_On-SDF.org-black?style=flat&logo=linux)
+
 
 > **The Mission:** On Nov 1, 2024, I set a goal to run at least **1 mile every single day** for 365 days and learn a little Python along the way.
 > **The Solution:** A Python automation tool that fetches activity data, parses my workout notes, and generates a static blog post instantly.
