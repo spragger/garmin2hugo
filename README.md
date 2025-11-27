@@ -24,7 +24,8 @@ graph LR
 
 **1. Data Extraction** The Python script authenticates with the Garmin Connect API and pulls the latest activity data.
 
-**2. Note Parsing** I use a custom format in my watch notes to split technical workout data from personal thoughts. The script parses this string:
+**2. Note Parsing** I enter a custom Note on Garmin Connect to split technical workout data from personal thoughts. 
+The script parses this string:
 ```text
 w: Intervals 4x400
 c: Felt strong, humid weather.
