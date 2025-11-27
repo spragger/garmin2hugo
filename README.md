@@ -53,8 +53,8 @@ This script is designed to be menu-driven for safety, allowing you to review the
 pip install -r requirements.txt
 
 # 2. Configure environment
-export EMAIL="your@email.com"
-export PASSWORD="yourpassword"
+export GARMIN_EMAIL="your@email.com"
+export GARMIN_PASSWORD="yourpassword"
 
 # 3. Run the generator
 python main.py
