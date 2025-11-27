@@ -25,12 +25,10 @@ graph LR
 **1. Data Extraction** The Python script authenticates with the Garmin Connect API and pulls the latest activity data.
 
 **2. Note Parsing** I use a custom format in my watch notes to split technical workout data from personal thoughts. The script parses this string:
-
-> **Input:** """`
-> w: Intervals 4x400
-> c: Felt strong, humid weather.
-> `"""
-
+```text
+w: Intervals 4x400
+c: Felt strong, humid weather.
+```
 It extracts these into separate Markdown frontmatter fields (`Workout` and `Comments`) using Regex, keeping the blog metadata clean.
 
 **3. Static Generation** The script calculates the pace and distance in Imperial units, generates a Hugo-compatible Markdown file, and triggers a build.
