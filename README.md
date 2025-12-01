@@ -35,11 +35,11 @@ It extracts these into separate Markdown frontmatter fields (`Workout` and `Comm
 
 ### Project Statistics
 
-| **Goal** | Run 1 mile, every day |
-| **Status** | Completed |
-| **Total Distance** | 1,520 miles |
-| **Weekly Average** | 29 miles |
-| **Stack** | Python, Hugo, Bash |
+* **Goal:** Run 1 mile, every day
+* **Total Distance:** 1,520 miles
+* **Weekly Avg:** 29 miles
+* **Lines of Code:** 349
+* **Stack:** Python, Hugo, Bash
 
 ---
 
