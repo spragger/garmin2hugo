@@ -3,7 +3,7 @@
 **A physical challenge turned code challeng.** 
 On Dec 1 2024, I started 1 year run streak, running minimum one mile every day. To document each day , I built a custom automation pipeline that turns my Garmin watch data into a blog.
 
-[**Visit the Live Blog →**](https://csprague.sdf.org/)
+[**Check the blog -->  /sprague runs →**](https://csprague.sdf.org/)
 
 ---
 
