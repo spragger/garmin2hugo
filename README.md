@@ -1,6 +1,7 @@
-# 365 Days of Running
+# Running Code
 
-**A physical challenge turned code challeng.** 
+**A physical challenge turned code challenge** 
+
 On Dec 1 2024, I started 1 year run streak, running minimum one mile every day. To document each day , I built a custom automation pipeline that turns my Garmin watch data into a blog.
 
 [**Check the blog →  /sprague runs →**](https://csprague.sdf.org/)
