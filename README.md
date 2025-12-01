@@ -1,6 +1,7 @@
 # 365 Days of Running
 
-**A physical challenge documented by code.** On Dec 1 2024, I set a goal to run at least one mile every single day. To keep myself accountable, I built a custom automation pipeline that turns my Garmin watch data into a static blog hosted on SDF.org.
+**A physical challenge turned code challeng.** 
+On Dec 1 2024, I started 1 year run streak, running minimum one mile every day. To document each day , I built a custom automation pipeline that turns my Garmin watch data into a blog.
 
 [**Visit the Live Blog →**](https://csprague.sdf.org/)
 
@@ -8,7 +9,7 @@
 
 ### The Architecture
 
-I wanted a "set it and forget it" workflow. The system connects my physical activity to my digital footprint using the Unix philosophy: simple tools doing one thing well.
+I wanted an automated way to handle creating the blog entry each day. The automation turns my physical footsteps into a digital footprint with a few simple steps.
 
 ![Architecture Diagram](./images/mermaid-diagram.png)
 
@@ -16,9 +17,7 @@ I wanted a "set it and forget it" workflow. The system connects my physical acti
 
 ### How It Works
 
-**1. Data Extraction** The Python script authenticates with the Garmin Connect API and pulls the latest activity data.
-
-**2. Note Parsing** I enter a custom Note on Garmin Connect to split technical workout data from personal thoughts. 
+**1. Note Parsing** When my watch data is uploaded to Garmin Connect, I edit the activity title and add some details about the run as a Note. 
 The script parses this string:
 ```text
 w: Intervals 4x400
@@ -26,9 +25,11 @@ c: Felt strong, humid weather.
 ```
 It extracts these into separate Markdown frontmatter fields (`Workout` and `Comments`) using Regex, keeping the blog metadata clean.
 
-**3. Static Generation** The script calculates the pace and distance in Imperial units, generates a Hugo-compatible Markdown file, and triggers a build.
+**2. Data Extraction** The Python script authenticates with the Garmin Connect API and pulls the latest activity data.
 
-**4. Hosting** The final HTML is served via **SDF.org**, a public access Unix system, keeping the project lightweight and rooted in open computing history.
+**3. Static Generation** The script calculates the duration, distance and pace, generates a tempalted Markdown file, and triggers a Hugo build.
+
+**4. Hosting** The script and final HTML are both hosted on **SDF.org**, a public access Unix system, keeping the project lightweight and rooted in open computing history.
 
 ---
 
@@ -38,8 +39,8 @@ It extracts these into separate Markdown frontmatter fields (`Workout` and `Comm
 | :--- | :--- |
 | **Goal** | Run 1 mile, every day |
 | **Status** | Completed |
-| **Total Distance** | Over 1,500 miles |
-| **Longest Streak** | 365 Days |
+| **Total Distance** | 1,520 miles |
+| **Weekly Average** | 29 miles |
 | **Stack** | Python, Hugo, Bash |
 
 ---
@@ -52,7 +53,7 @@ This script is designed to be menu-driven for safety, allowing you to review the
 # 1. Install requirements
 pip install -r requirements.txt
 
-# 2. Configure environment
+# 2. Configure variables in .env
 export GARMIN_EMAIL="your@email.com"
 export GARMIN_PASSWORD="yourpassword"
 
