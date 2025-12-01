@@ -35,8 +35,6 @@ It extracts these into separate Markdown frontmatter fields (`Workout` and `Comm
 
 ### Project Statistics
 
-| Metric | Result |
-| :--- | :--- |
 | **Goal** | Run 1 mile, every day |
 | **Status** | Completed |
 | **Total Distance** | 1,520 miles |
